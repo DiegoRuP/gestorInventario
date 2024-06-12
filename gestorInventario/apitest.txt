@@ -1,0 +1,149 @@
+-- Creacion de la base de datos
+CREATE DATABASE papeleriadb;
+USE papeleriadb;
+
+-- Tabla de proveedores
+CREATE TABLE proveedores (
+    id_proveedor INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100),
+    contacto VARCHAR(100),
+    telefono VARCHAR(15),
+    correo_electronico VARCHAR(100),
+    direccion VARCHAR(255)
+);
+
+-- Tabla de categorias
+CREATE TABLE categorias (
+    id_categoria INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100),
+    descripcion VARCHAR(255)
+);
+
+-- Tabla de productos
+CREATE TABLE productos (
+    id_producto INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100),
+    descripcion VARCHAR(255),
+    id_categoria INT,
+    marca VARCHAR(100),
+    precio_compra DECIMAL(10, 2),
+    precio_venta DECIMAL(10, 2),
+    cantidad_stock INT,
+    unidad_medida VARCHAR(50),
+    id_proveedor INT,
+    fecha_ingreso DATE,
+    fecha_caducidad DATE,
+    codigo_barras VARCHAR(50),
+    FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria),
+    FOREIGN KEY (id_proveedor) REFERENCES proveedores(id_proveedor)
+);
+
+-- Tabla de clientes
+CREATE TABLE clientes (
+    id_cliente INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100),
+    telefono VARCHAR(15),
+    correo_electronico VARCHAR(100),
+    direccion VARCHAR(255)
+);
+
+-- Tabla de ventas
+CREATE TABLE ventas (
+    id_venta INT AUTO_INCREMENT PRIMARY KEY,
+    fecha DATE,
+    id_cliente INT,
+    total_venta DECIMAL(10, 2),
+    FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
+);
+
+-- Tabla de detalles_venta
+CREATE TABLE detalles_venta (
+    id_detalle INT AUTO_INCREMENT PRIMARY KEY,
+    id_venta INT,
+    id_producto INT,
+    cantidad INT,
+    precio_venta DECIMAL(10, 2),
+    FOREIGN KEY (id_venta) REFERENCES ventas(id_venta),
+    FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
+);
+
+-- Tabla de compras
+CREATE TABLE compras (
+    id_compra INT AUTO_INCREMENT PRIMARY KEY,
+    fecha DATE,
+    id_proveedor INT,
+    total_compra DECIMAL(10, 2),
+    FOREIGN KEY (id_proveedor) REFERENCES proveedores(id_proveedor)
+);
+
+-- Tabla de detalles_compra
+CREATE TABLE detalles_compra (
+    id_detalle INT AUTO_INCREMENT PRIMARY KEY,
+    id_compra INT,
+    id_producto INT,
+    cantidad INT,
+    precio_compra DECIMAL(10, 2),
+    FOREIGN KEY (id_compra) REFERENCES compras(id_compra),
+    FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
+);
+
+-- Tabla de usuarios
+CREATE TABLE usuarios (
+    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100),
+    correo_electronico VARCHAR(100),
+    contrasena VARCHAR(100),
+    rol VARCHAR(50)
+);
+
+-- Insertando datos de ejemplo
+
+-- Proveedores
+INSERT INTO proveedores (nombre, contacto, telefono, correo_electronico, direccion) VALUES
+('proveedor a', 'juan perez', '555-1234', 'contacto@proveedora.com', 'calle falsa 123'),
+('proveedor b', 'maria lopez', '555-5678', 'contacto@proveedorb.com', 'avenida siempreviva 456');
+
+-- Categorias
+INSERT INTO categorias (nombre, descripcion) VALUES
+('papel', 'todo tipo de papeles'),
+('escritura', 'instrumentos de escritura'),
+('arte', 'materiales para arte');
+
+-- Productos
+INSERT INTO productos (nombre, descripcion, id_categoria, marca, precio_compra, precio_venta, cantidad_stock, unidad_medida, id_proveedor, fecha_ingreso, fecha_caducidad, codigo_barras) VALUES
+('papel bond', 'resma de papel bond tamaño carta', 1, 'marca a', 50.00, 75.00, 100, 'paquete', 1, '2024-06-01', NULL, '1234567890123'),
+('boligrafo azul', 'boligrafo de tinta azul', 2, 'marca b', 2.50, 5.00, 500, 'pieza', 2, '2024-06-01', NULL, '1234567890124'),
+('acuarelas', 'caja de acuarelas', 3, 'marca c', 20.00, 30.00, 50, 'caja', 1, '2024-06-01', '2025-06-01', '1234567890125');
+
+-- Clientes
+INSERT INTO clientes (nombre, telefono, correo_electronico, direccion) VALUES
+('cliente 1', '555-9876', 'cliente1@correo.com', 'calle luna 789'),
+('cliente 2', '555-4321', 'cliente2@correo.com', 'avenida sol 101');
+
+-- Ventas
+INSERT INTO ventas (fecha, id_cliente, total_venta) VALUES
+('2024-06-10', 1, 100.00),
+('2024-06-11', 2, 150.00);
+
+-- Detalles_venta
+INSERT INTO detalles_venta (id_venta, id_producto, cantidad, precio_venta) VALUES
+(1, 1, 2, 75.00),
+(1, 2, 5, 5.00),
+(2, 1, 1, 75.00),
+(2, 3, 2, 30.00);
+
+-- Compras
+INSERT INTO compras (fecha, id_proveedor, total_compra) VALUES
+('2024-06-05', 1, 500.00),
+('2024-06-06', 2, 300.00);
+
+-- Detalles_compra
+INSERT INTO detalles_compra (id_compra, id_producto, cantidad, precio_compra) VALUES
+(1, 1, 50, 50.00),
+(1, 3, 20, 20.00),
+(2, 2, 100, 2.50);
+
+-- Usuarios
+INSERT INTO usuarios (nombre, correo_electronico, contrasena, rol) VALUES
+('admin', 'admin@papeleria.com', 'admin123', 'administrador'),
+('vendedor', 'vendedor@papeleria.com', 'vendedor123', 'vendedor');
