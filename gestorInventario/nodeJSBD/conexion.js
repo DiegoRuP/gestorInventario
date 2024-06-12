@@ -1,9 +1,10 @@
 const mysql = require('mysql');
 
-module.exports = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'apitest'
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'papeleriadb'
 });
 
+module.exports = connection;

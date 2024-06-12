@@ -5,6 +5,7 @@ const connection = require('./conexion');
 const misrutas = require('./routes/rutas');
 
 const app = express();
+const port = 3000;
 
 // Configurar CORS
 app.use(cors({
@@ -20,21 +21,27 @@ app.use(bodyParser.json());
 // Usar rutas
 app.use('/', misrutas);
 
-// Conexión a la base de datos
-connection.connect((err, res) => {
-    if (err) {
-        console.log(err);
-        console.log('Error al conectar a la base de datos');
-        return;
+// Ruta para obtener los datos de la tabla productos
+app.get('/productos', (req, res) => {
+  connection.query('SELECT * FROM productos', (error, results, fields) => {
+    if (error) {
+      console.error('Error en la consulta:', error);
+      res.status(500).send('Error en la consulta');
+      return;
     }
-    console.log('Conexión a la base de datos exitosa');
+    res.json(results);
+  });
 });
 
-// Iniciar el servidor
-app.listen(3000, (err, res) => { 
-    if (err) {
-        console.log('Error al iniciar el servidor');
-        return;
-    }
-    console.log('Servidor iniciado en http://localhost:3000');
+// Iniciar el servidor y conectar a la base de datos
+connection.connect((err) => {
+  if (err) {
+    console.error('Error conectando a la base de datos:', err.stack);
+    return;
+  }
+  console.log('Conexión a la base de datos exitosa');
+
+  app.listen(port, () => {
+    console.log(`Servidor corriendo en http://localhost:${port}`);
+  });
 });
