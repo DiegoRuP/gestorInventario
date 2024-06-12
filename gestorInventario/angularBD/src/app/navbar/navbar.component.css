@@ -1,0 +1,17 @@
+.bg-dark{
+    background-color: #6ab5e3 !important;
+}
+
+a{
+    color: white !important;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 30px;
+}
+
+.btn {
+    width: 100%;
+}
+
+img{
+    width: 100px;
+}
