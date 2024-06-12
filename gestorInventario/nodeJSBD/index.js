@@ -40,4 +40,8 @@ connection.connect((err) => {
     return;
   }
   console.log('Conexión a la base de datos exitosa');
+
+  app.listen(port, () => {
+    console.log(`Servidor corriendo en http://localhost:${port}`);
+  });
 });
