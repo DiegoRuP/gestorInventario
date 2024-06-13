@@ -1,6 +1,6 @@
 module.exports = {
     create: (conection, body, callback) => {
-        conection.query('INSERT INTO users SET ?', body, (err, results) => {
+        conection.query('INSERT INTO productos SET ?', body, (err, results) => {
             if (err){
                 callback({
                     array: null,
@@ -19,7 +19,7 @@ module.exports = {
     },
 
     getAll: (connection, callback) => {
-        connection.query('select * from users', (err, results) => {
+        connection.query('select * from productos', (err, results) => {
             if (err){
                 callback({
                     array: null,
