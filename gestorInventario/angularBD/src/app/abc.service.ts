@@ -17,4 +17,8 @@ export class AbcService {
   alta(url:string, body:any){
     return this.httpClient.post(url, body).toPromise();
   }
+
+  baja(id: string){
+    return this.httpClient.delete(`${this.apiUrl}/productos/${id}`).toPromise();
+  }
 }

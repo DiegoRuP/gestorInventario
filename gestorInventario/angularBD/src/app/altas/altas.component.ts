@@ -52,22 +52,17 @@ export class AltasComponent implements OnInit {
     this.abcService.alta('http://localhost:3000/productos', body)
       .then((data) => {
         console.log('Respuesta del servidor:', data);
-        // Aquí podrías manejar la respuesta del servidor, por ejemplo, mostrar un mensaje de éxito
       })
       .catch((error) => {
         console.error('Error al insertar producto:', error);
         if (error.response && error.response.data && error.response.data.err) {
-          // Manejar el error específico de la clave externa aquí
           const errObj = JSON.parse(error.response.data.err);
           if (errObj.code === 'ER_NO_REFERENCED_ROW_2') {
-            // Mostrar un mensaje al usuario indicando que la categoría no existe
             alert('La categoría especificada no existe. Por favor, seleccione una categoría válida.');
           } else {
-            // Manejar otros tipos de errores
             console.error('Error desconocido:', error);
           }
         } else {
-          // Manejar otros tipos de errores
           console.error('Error desconocido:', error);
         }
       });

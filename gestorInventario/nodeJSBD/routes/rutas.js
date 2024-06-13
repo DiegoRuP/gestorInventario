@@ -44,4 +44,11 @@ router.post('/productos', [
     });
 });
 
+router.delete('/productos/:id', (req, res) => {
+    const id_producto = req.params.id;
+    user.delete(connection, id_producto, (data) => {
+        res.json(data);
+    });
+});
+
 module.exports = router;

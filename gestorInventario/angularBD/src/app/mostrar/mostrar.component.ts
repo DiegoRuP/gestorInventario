@@ -27,4 +27,15 @@ export class MostrarComponent implements OnInit {
       }
     );
   }
+
+  baja(id_producto: string): void {
+    this.abcService.baja(id_producto)
+      .then((res) => {
+        console.log('Producto eliminado:', res);
+        this.array = this.array.filter(producto => producto.id_producto !== id_producto);
+      })
+      .catch((error) => {
+        console.error('Error al eliminar producto:', error);
+      });
+  }
 }

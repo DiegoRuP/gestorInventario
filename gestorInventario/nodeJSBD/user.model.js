@@ -38,6 +38,25 @@ module.exports = {
         });
     },
 
+    delete: (connection, id_producto, callback) => {
+        connection.query('DELETE FROM productos WHERE id_producto = ?', [id_producto], (err, results) => {
+            if (err) {
+                console.error('Error al eliminar producto:', err);
+                callback({
+                    success: false,
+                    error: err.message
+                });
+                return;
+            }
+
+            console.log('Producto eliminado correctamente:', results);
+            callback({
+                success: true,
+                affectedRows: results.affectedRows
+            });
+        });
+    },
+
     getAll: (connection, callback) => {
         connection.query('SELECT * FROM productos', (err, results) => {
             if (err) {

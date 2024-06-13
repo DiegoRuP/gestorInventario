@@ -16,6 +16,7 @@
       <th scope="col">Fecha Ingreso</th>
       <th scope="col">Fecha Caducidad</th>
       <th scope="col">Código Barras</th>
+      <th scope="col">Acciones</th>
     </tr>
   </thead>
   <tbody>
@@ -33,6 +34,9 @@
       <td>{{ producto.fecha_ingreso }}</td>
       <td>{{ producto.fecha_caducidad }}</td>
       <td>{{ producto.codigo_barras }}</td>
+      <td>
+        <button class="btn btn-danger" (click)="baja(producto.id_producto)">Eliminar</button>
+      </td>
     </tr>
   </tbody>
 </table>
