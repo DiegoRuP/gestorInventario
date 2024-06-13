@@ -77,6 +77,18 @@ actualizar(): void {
   }
 }
 
-  
+searchQuery: string = '';
+
+buscar(): void {
+  if (this.searchQuery) {
+    this.abcService.buscarProductos(this.searchQuery).subscribe((res: any) => {
+      console.log('Resultados de búsqueda');
+      console.log(res);
+      this.array = res.array;
+    });
+  } else {
+    this.constructor();
+  }
+}
 
 }

@@ -30,4 +30,8 @@ export class AbcService {
     return this.httpClient.put(`${this.apiUrl}/productos/${id}`, body).toPromise();
   }
 
+  buscarProductos(query: string) {
+    return this.httpClient.get(`http://localhost:3000/search?q=${query}`);
+  }
+
 }

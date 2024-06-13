@@ -5,6 +5,17 @@ const { body, validationResult } = require('express-validator');
 
 const router = express.Router();
 
+// Endpoint para la búsqueda
+router.get('/search', (req, res) => {
+    const searchQuery = req.query.q;
+    const sql = 'SELECT * FROM productos WHERE nombre LIKE ? OR descripcion LIKE ?';
+    connection.query(sql, [`%${searchQuery}%`, `%${searchQuery}%`], (err, results) => {
+        if (err) {
+            return res.status(500).json({ error: err.message });
+        }
+        res.json({ array: results });
+    });
+});
 
 
 // Ruta para obtener todos los productos
