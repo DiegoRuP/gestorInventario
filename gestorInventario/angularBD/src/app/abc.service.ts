@@ -14,8 +14,7 @@ export class AbcService {
     return this.httpClient.get(url);
   }
 
-  alta(url:string,body:any){
+  alta(url:string, body:any){
     return this.httpClient.post(url, body).toPromise();
   }
-
 }

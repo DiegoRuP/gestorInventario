@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+    import { Component, OnInit } from '@angular/core';
 import { AbcService } from '../abc.service';
 import { CommonModule } from '@angular/common';
 
@@ -13,14 +13,18 @@ export class MostrarComponent implements OnInit {
 
   array: any[] = [];
 
-  constructor(private abcService:AbcService){
-    this.abcService.consulta('http://localhost:3000/productos').subscribe((res:any)=>{
-      console.log("Consulta general...");
-      console.log(res);
-      this.array=res.array});
-  }
+  constructor(private abcService:AbcService){}
 
   ngOnInit(): void {
-  
+    this.abcService.consulta('http://localhost:3000/productos').subscribe(
+      (res: any) => {
+        console.log("Consulta general...");
+        console.log(res); 
+        this.array = res.products; 
+      },
+      (error) => {
+        console.error('Error al obtener los productos:', error);
+      }
+    );
   }
 }
