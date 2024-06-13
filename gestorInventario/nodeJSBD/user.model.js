@@ -56,6 +56,24 @@ module.exports = {
             });
         });
     },
+    update: (connection, id_producto, body, callback) => {
+        connection.query('UPDATE productos SET ? WHERE id_producto = ?', [body, id_producto], (err, results) => {
+            if (err) {
+                console.error('Error al actualizar producto:', err);
+                callback({
+                    success: false,
+                    error: err.message
+                });
+                return;
+            }
+
+            console.log('Producto actualizado correctamente:', results);
+            callback({
+                success: true,
+                affectedRows: results.affectedRows
+            });
+        });
+    },
 
     getAll: (connection, callback) => {
         connection.query('SELECT * FROM productos', (err, results) => {

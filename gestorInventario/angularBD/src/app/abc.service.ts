@@ -26,5 +26,8 @@ export class AbcService {
     return this.httpClient.get(url);
   }
 
+  actualizar(id: string, body: any){
+    return this.httpClient.put(`${this.apiUrl}/productos/${id}`, body).toPromise();
+  }
 
 }
