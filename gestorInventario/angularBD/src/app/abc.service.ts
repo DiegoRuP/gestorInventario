@@ -18,4 +18,9 @@ export class AbcService {
     return this.httpClient.post(url, body).toPromise();
   }
 
+  generarReporte(url: string) {
+    return this.httpClient.get(url);
+  }
+
+
 }
