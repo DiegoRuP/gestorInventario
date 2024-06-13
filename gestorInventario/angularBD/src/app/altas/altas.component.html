@@ -2,87 +2,90 @@
     Formulario de altas
 </h1>
 
+<hr>
+
 <form>
     <div class="form-group row">
         <label for="colFormLabel" class="col-sm-2 col-form-label">ID Producto</label>
         <div class="col-sm-10">
-          <input type="text" [(ngModel)]="id_producto" name="id_producto" class="form-control" id="colFormLabel"  placeholder="ID">
+          <input type="text" [(ngModel)]="id_producto" name="id_producto" class="form-control" id="colFormLabel"  placeholder="">
         </div>
     </div>
     <div class="form-group row">
         <label for="colFormLabel" class="col-sm-2 col-form-label">Nombre</label>
         <div class="col-sm-10">
-          <input type="text" [(ngModel)]="nombre" name="nombre" class="form-control" id="colFormLabel" placeholder="Nombre">
+          <input type="text" [(ngModel)]="nombre" name="nombre" class="form-control" id="colFormLabel" placeholder="">
         </div>
     </div>
     <div class="form-group row">
         <label for="colFormLabel" class="col-sm-2 col-form-label">Descripcion</label>
         <div class="col-sm-10">
-          <input type="text" [(ngModel)]="descripcion" name="descripcion" class="form-control" id="colFormLabel" placeholder="Descripcion">
+          <input type="text" [(ngModel)]="descripcion" name="descripcion" class="form-control" id="colFormLabel" placeholder="">
         </div>
     </div>
     <div class="form-group row">
         <label for="colFormLabel" class="col-sm-2 col-form-label">Id categoria</label>
         <div class="col-sm-10">
-          <input type="text" [(ngModel)]="id_categoria" name="id_categoria" class="form-control" id="colFormLabel" placeholder="Categoria">
+          <input type="text" [(ngModel)]="id_categoria" name="id_categoria" class="form-control" id="colFormLabel" placeholder="">
         </div>
     </div>
     <div class="form-group row">
       <label for="colFormLabel" class="col-sm-2 col-form-label">Marca</label>
       <div class="col-sm-10">
-        <input type="text" [(ngModel)]="marca" name="marca" class="form-control" id="colFormLabel" placeholder="Marca">
+        <input type="text" [(ngModel)]="marca" name="marca" class="form-control" id="colFormLabel" placeholder="">
       </div>
   </div>
     <div class="form-group row">
         <label for="colFormLabel" class="col-sm-2 col-form-label">Precio Compra</label>
         <div class="col-sm-10">
-          <input type="text" [(ngModel)]="precio_compra" name="precio_compra" class="form-control" id="colFormLabel" placeholder="Precio Compra">
+          <input type="text" [(ngModel)]="precio_compra" name="precio_compra" class="form-control" id="colFormLabel" placeholder=" ">
         </div>
     </div>
     <div class="form-group row">
       <label for="colFormLabel" class="col-sm-2 col-form-label">Precio Venta</label>
       <div class="col-sm-10">
-        <input type="text" [(ngModel)]="precio_venta" name="precio_compra" class="form-control" id="colFormLabel" placeholder="Precio Venta">
+        <input type="text" [(ngModel)]="precio_venta" name="precio_compra" class="form-control" id="colFormLabel" placeholder=" ">
       </div>
     </div>
     <div class="form-group row">
       <label for="colFormLabel" class="col-sm-2 col-form-label">Stocks</label>
       <div class="col-sm-10">
-        <input type="text" [(ngModel)]="cantidad_stock" name="cantidad_stock" class="form-control" id="colFormLabel" placeholder="Cantidad">
+        <input type="text" [(ngModel)]="cantidad_stock" name="cantidad_stock" class="form-control" id="colFormLabel" placeholder="">
       </div>
     </div>
     <div class="form-group row">
       <label for="colFormLabel" class="col-sm-2 col-form-label">Unidad Medida</label>
       <div class="col-sm-10">
-        <input type="text" [(ngModel)]="unidad_medida" name="unidad_medida" class="form-control" id="colFormLabel" placeholder="Unidad">
+        <input type="text" [(ngModel)]="unidad_medida" name="unidad_medida" class="form-control" id="colFormLabel" placeholder="">
       </div>
     </div>
     <div class="form-group row">
       <label for="colFormLabel" class="col-sm-2 col-form-label">ID Proveedor</label>
       <div class="col-sm-10">
-        <input type="text" [(ngModel)]="id_proveedor" name="id_proveedor" class="form-control" id="colFormLabel" placeholder="ID">
+        <input type="text" [(ngModel)]="id_proveedor" name="id_proveedor" class="form-control" id="colFormLabel" placeholder="">
       </div>
     </div>
     <div class="form-group row">
       <label for="colFormLabel" class="col-sm-2 col-form-label">Fecha Ingreso</label>
       <div class="col-sm-10">
-        <input type="text" [(ngModel)]="fecha_ingreso" name="fecha_ingreso" class="form-control" id="colFormLabel" placeholder="Ingreso">
+        <input type="text" [(ngModel)]="fecha_ingreso" name="fecha_ingreso" class="form-control" id="colFormLabel" placeholder="">
       </div>
     </div>
     <div class="form-group row">
       <label for="colFormLabel" class="col-sm-2 col-form-label">Fecha Caducidad</label>
       <div class="col-sm-10">
-        <input type="text" [(ngModel)]="fecha_caducidad" name="fecha_caducidad" class="form-control" id="colFormLabel" placeholder="Caducidad">
+        <input type="text" [(ngModel)]="fecha_caducidad" name="fecha_caducidad" class="form-control" id="colFormLabel" placeholder="">
       </div>
     </div>
     <div class="form-group row">
       <label for="colFormLabel" class="col-sm-2 col-form-label">Codigo de barras</label>
       <div class="col-sm-10">
-        <input type="text" [(ngModel)]="codigo_barras" name="codigo_barras" class="form-control" id="colFormLabel" placeholder="Codigo">
+        <input type="text" [(ngModel)]="codigo_barras" name="codigo_barras" class="form-control" id="colFormLabel" placeholder="">
       </div>
     </div>
+
+    <hr>
   
     <button class="btn btn-primary" (click)="insertar()">Insertar</button>
     <button class="btn btn-primary" (click)="limpiar()">Limpiar</button>
-    <button class="btn btn-primary" (click)="editar()">Editar</button>
 </form>

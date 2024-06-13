@@ -1,0 +1,40 @@
+.container{
+    margin: 20px;
+    border: 3px solid #394867;
+    color: #9BA4B5;
+
+    text-align: center;
+    border-radius: 50px;
+
+    height: 700px;
+    
+}
+
+h3{
+    margin: 80px;
+    text-align: justify;
+}
+
+h1{
+    margin-top: 40px;
+    text-align: center;
+    font-size: 60px;
+    margin-bottom: 60px;
+    color: #394867;
+}
+
+
+ul.horizontal-list {
+    display: flex;
+    list-style-type: none;
+    justify-content: space-around;
+}
+ul.horizontal-list li {
+    margin-right: 20px;
+    display: flex;
+}
+ul.horizontal-list li i {
+    color: #394867;
+    font-size: 100px;
+    margin-right: 10px;
+}

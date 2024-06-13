@@ -8,10 +8,66 @@ td{
 }
 
 table{
-    border-radius: 20px;
-    padding: 10px;
-    margin: 20px;
     width: 100%;
+    border-radius: 20px;
+    margin: 0 auto;
     background-color: white;
     opacity: .6;
+}
+
+.buscar{
+    display: flex;
+    justify-content: right;
+}
+
+.buscar button{
+    padding: 10px;
+    border: none;
+    background-color: transparent;
+}
+
+.buscar button:hover{
+    transform: scale(1.1);
+}
+
+.buscar input{
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    margin: 10px;
+    width: 300px;
+}
+
+i{
+    font-size: 20px;
+}
+
+.acciones{
+    display: flex;
+    justify-content: center;    
+}
+
+form button{
+    width: 49%;
+    padding: 10px;
+    margin: 2px;
+    margin-bottom: 40px;
+    background-color: #394867;
+    border: none;
+    font-size: 20px;
+
+}
+
+
+.form-group{
+    margin: 20px;
+    text-align: right;
+}
+
+form, input{
+    font-size: 20px;
+}
+
+#productoS {
+    text-align: center;
 }

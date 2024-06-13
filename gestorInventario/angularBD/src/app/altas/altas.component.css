@@ -1,8 +1,32 @@
 button{
     width: 49%;
+    padding: 10px;
     margin: 2px;
+    margin-bottom: 40px;
+
+    background-color: #394867;
+
+    border: none;
+    font-size: 20px;
+
+}
+
+hr{
+    margin: 40px;
+}
+
+h1{
+    text-align: center;
+    margin: 20px;
+    font-size: 50px;
+    color: #394867;
 }
 
 .form-group{
     margin: 20px;
+    text-align: right;
+}
+
+form, input{
+    font-size: 20px;
 }

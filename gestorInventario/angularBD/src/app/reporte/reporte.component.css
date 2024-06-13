@@ -15,3 +15,23 @@ table{
     background-color: white;
     opacity: .6;
 }
+
+div{
+    text-align: right;
+}
+
+button{
+    width: 10%;
+    padding: 10px;
+    margin: 2px;
+    margin-bottom: 40px;
+    border-radius: 50px;
+    background-color: #394867;
+    color: white;
+    border: none;
+    font-size: 20px;
+}
+
+button:hover{
+    transform: scale(1.1);
+}

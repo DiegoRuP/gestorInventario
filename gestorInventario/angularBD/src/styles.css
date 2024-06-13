@@ -1,4 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 body{
-    background-color: rgb(161, 219, 235);
+    background-color: #F1F6F9;
+}
+
+
+hr{
+    margin: 40px;
+}
+
+h1{
+    text-align: center;
+    margin: 20px;
+    font-size: 50px;
+    color: #394867;
 }

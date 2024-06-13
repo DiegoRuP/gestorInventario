@@ -82,8 +82,4 @@ export class AltasComponent implements OnInit {
     this.fecha_caducidad = '';
     this.codigo_barras = '';
   }
-
-  editar(){
-
-  }
 }

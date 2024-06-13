@@ -1,10 +1,9 @@
 .bg-dark{
-    background-color: #6ab5e3 !important;
+    background-color: #394867 !important;
 }
 
 a{
     color: white !important;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 30px;
 }
 
@@ -14,4 +13,9 @@ a{
 
 img{
     width: 100px;
+}
+
+i{
+    margin-left: 30px;
+    margin-right: 30px;
 }
