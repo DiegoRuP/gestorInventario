@@ -30,21 +30,26 @@ export class ReporteComponent implements OnInit {
       this.array2 = res.data; 
     });
   }
-
   generarPDF() {
-    const doc = new jsPDF();
+    const doc = new jsPDF({
+      orientation: 'landscape' 
+    });
 
+    doc.setFontSize(18); 
     doc.text('Reporte Inventario Faltante', 14, 20);
 
+    doc.setFontSize(12);
     (doc as any).autoTable({
-      head: [['ID Producto', 'Nombre', 'Descripción', 'ID Categoría', 'Marca', 'Precio Compra', 'Precio Venta', 'Cantidad en Stock', 'Unidad de Medida', 'ID Proveedor', 'Fecha de Ingreso', 'Fecha de Caducidad', 'Código de Barras']],
+      head: [['ID', 'Nombre', 'Descripción', 'Categoría', 'Marca', 'Precio Compra', 'Precio Venta', 'Stock', 'Unidad', 'Proveedor', 'Ingreso', 'Caducidad', 'Código']],
       body: this.array.map(item => [
         item.id_producto, item.nombre, item.descripcion, item.id_categoria, item.marca, item.precio_compra,
         item.precio_venta, item.cantidad_stock, item.unidad_medida, item.id_proveedor, item.fecha_ingreso,
         item.fecha_caducidad, item.codigo_barras
       ]),
       startY: 30,
-      theme: 'striped'
+      theme: 'striped',
+      headStyles: { fontSize: 10 }, 
+      bodyStyles: { fontSize: 9 }  
     });
 
     doc.save('reporte_inventario.pdf');
