@@ -6,13 +6,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AbcService {
 
+  private apiUrl = 'http://localhost:3000';
+
   constructor(private httpClient: HttpClient) { }
 
-  consulta(url: string) {
+  consulta(url: string){
     return this.httpClient.get(url);
   }
 
-  alta(url: string, body: any) {
+  alta(url:string,body:any){
     return this.httpClient.post(url, body).toPromise();
   }
+
 }

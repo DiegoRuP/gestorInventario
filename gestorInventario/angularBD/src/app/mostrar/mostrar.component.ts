@@ -11,16 +11,16 @@ import { CommonModule } from '@angular/common';
 })
 export class MostrarComponent implements OnInit {
 
-  array: any = [] = [];
+  array: any[] = [];
 
-  constructor(private abcService: AbcService) { 
-    this.abcService.consulta('http://localhost:3000/user').subscribe((res: any) => {
-    console.log('Consulta general');  
-    console.log(res);
-    this.array = res.array;
-    });
+  constructor(private abcService:AbcService){
+    this.abcService.consulta('http://localhost:3000/productos').subscribe((res:any)=>{
+      console.log("Consulta general...");
+      console.log(res);
+      this.array=res.array});
   }
 
-  ngOnInit(): void { }
-
+  ngOnInit(): void {
+  
+  }
 }

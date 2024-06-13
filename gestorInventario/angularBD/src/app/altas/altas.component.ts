@@ -11,11 +11,22 @@ import { CommonModule } from '@angular/common';
   styleUrl: './altas.component.css'
 })
 export class AltasComponent implements OnInit {
-  id?: string;
-  name?: string;
-  lastname?: string;
-  email?: string;
-  tel?: string;
+  id_producto?: string;
+  nombre?: string;
+  descripcion?: string;
+  id_categoria?: string;
+  marca?: string;
+  precio_compra?: string;
+  precio_venta?: string;
+  cantidad_stock?: string;
+  unidad_medida?: string;
+  id_proveedor?: string;
+  fecha_ingreso?: string;
+  fecha_caducidad?: string;
+  codigo_barras?: string
+  
+  editando: boolean = false;
+  productoIdEditar: string = '';
 
   constructor(private abcService: AbcService) { }
 
@@ -23,25 +34,61 @@ export class AltasComponent implements OnInit {
 
   insertar(): void {
     let body = {
-      idUser: this.id,
-      name: this.name,
-      lastname: this.lastname,
-      contact: this.email,
-      cellphone: this.tel
-  };
-  this.abcService.alta('http://localhost:3000/user', body).then((data) => {
-    console.log(data);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+      id_producto: this.id_producto,
+      nombre: this.nombre,
+      descripcion: this.descripcion,
+      id_categoria: this.id_categoria,
+      marca: this.marca,
+      precio_compra: this.precio_compra,
+      precio_venta: this.precio_venta,
+      cantidad_stock: this.cantidad_stock,
+      unidad_medida: this.unidad_medida,
+      id_proveedor: this.id_proveedor,
+      fecha_ingreso: this.fecha_ingreso,
+      fecha_caducidad: this.fecha_caducidad,
+      codigo_barras: this.codigo_barras
+    };
+  
+    this.abcService.alta('http://localhost:3000/productos', body)
+      .then((data) => {
+        console.log('Respuesta del servidor:', data);
+        // Aquí podrías manejar la respuesta del servidor, por ejemplo, mostrar un mensaje de éxito
+      })
+      .catch((error) => {
+        console.error('Error al insertar producto:', error);
+        if (error.response && error.response.data && error.response.data.err) {
+          // Manejar el error específico de la clave externa aquí
+          const errObj = JSON.parse(error.response.data.err);
+          if (errObj.code === 'ER_NO_REFERENCED_ROW_2') {
+            // Mostrar un mensaje al usuario indicando que la categoría no existe
+            alert('La categoría especificada no existe. Por favor, seleccione una categoría válida.');
+          } else {
+            // Manejar otros tipos de errores
+            console.error('Error desconocido:', error);
+          }
+        } else {
+          // Manejar otros tipos de errores
+          console.error('Error desconocido:', error);
+        }
+      });
   }
 
   limpiar(): void {
-    this.id = '';
-    this.name = '';
-    this.lastname = '';
-    this.email = '';
-    this.tel = '';
+    this.id_producto = '';
+    this.nombre = '';
+    this.descripcion = '';
+    this.id_categoria = '';
+    this.precio_compra = '';
+    this.precio_venta = '';
+    this.cantidad_stock = '';
+    this.unidad_medida = '';
+    this.id_proveedor = '';
+    this.fecha_ingreso = '';
+    this.fecha_caducidad = '';
+    this.codigo_barras = '';
+  }
+
+  editar(){
+
   }
 }
