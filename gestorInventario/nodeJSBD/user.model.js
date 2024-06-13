@@ -57,23 +57,27 @@ module.exports = {
         });
     },
     update: (connection, id_producto, body, callback) => {
-        connection.query('UPDATE productos SET ? WHERE id_producto = ?', [body, id_producto], (err, results) => {
-            if (err) {
-                console.error('Error al actualizar producto:', err);
-                callback({
-                    success: false,
-                    error: err.message
-                });
-                return;
-            }
-
-            console.log('Producto actualizado correctamente:', results);
+        const { nombre, descripcion, id_categoria, marca, precio_compra, precio_venta, cantidad_stock, unidad_medida, id_proveedor, fecha_ingreso, fecha_caducidad, codigo_barras } = body;
+      
+        const sql = `UPDATE productos SET nombre = ?, descripcion = ?, id_categoria = ?, marca = ?, precio_compra = ?, precio_venta = ?, cantidad_stock = ?, unidad_medida = ?, id_proveedor = ?, fecha_ingreso = ?, fecha_caducidad = ?, codigo_barras = ? WHERE id_producto = ?`;
+      
+        connection.query(sql, [nombre, descripcion, id_categoria, marca, precio_compra, precio_venta, cantidad_stock, unidad_medida, id_proveedor, fecha_ingreso, fecha_caducidad, codigo_barras, id_producto], (err, results) => {
+          if (err) {
+            console.error('Error al actualizar producto:', err);
             callback({
-                success: true,
-                affectedRows: results.affectedRows
+              success: false,
+              error: err.message
             });
+            return;
+          }
+      
+          console.log('Producto actualizado correctamente:', results);
+          callback({
+            success: true,
+            affectedRows: results.affectedRows
+          });
         });
-    },
+      },
 
     getAll: (connection, callback) => {
         connection.query('SELECT * FROM productos', (err, results) => {

@@ -51,22 +51,32 @@ export class MostrarComponent implements OnInit {
     this.productoSeleccionado = { ...producto }
   }
 
-  actualizar(): void {
-    if (this.productoSeleccionado) {
-      this.abcService.actualizar(this.productoSeleccionado.id_producto, this.productoSeleccionado)
-        .then((res) => {
-          console.log('Producto actualizado:', res);
-          // Actualizar el array con los datos modificados
-          const index = this.array.findIndex(producto => producto.id_producto === this.productoSeleccionado.id_producto);
-          if (index !== -1) {
-            this.array[index] = { ...this.productoSeleccionado };
-          }
-          this.productoSeleccionado = null; // Limpiar la selección
-        })
-        .catch((error) => {
-          console.error('Error al actualizar producto:', error);
-        });
-    }
+// mostrar.ts
+// mostrar.ts
+actualizar(): void {
+  if (this.productoSeleccionado) {
+    console.log('Datos a actualizar:', this.productoSeleccionado);
+
+    // Convertir fechas a formato adecuado si es necesario
+    this.productoSeleccionado.fecha_ingreso = new Date(this.productoSeleccionado.fecha_ingreso).toISOString().split('T')[0];
+    this.productoSeleccionado.fecha_caducidad = new Date(this.productoSeleccionado.fecha_caducidad).toISOString().split('T')[0];
+
+    this.abcService.actualizar(this.productoSeleccionado.id_producto, this.productoSeleccionado)
+      .then((res) => {
+        console.log('Producto actualizado:', res);
+        const index = this.array.findIndex(producto => producto.id_producto === this.productoSeleccionado.id_producto);
+        if (index !== -1) {
+          this.array[index] = { ...this.productoSeleccionado };
+        }
+        this.productoSeleccionado = null; // Limpiar la selección
+      })
+      .catch((error) => {
+        console.error('Error al actualizar producto:', error);
+        alert(`Error al actualizar producto: ${error.message}`);
+      });
   }
+}
+
+  
 
 }

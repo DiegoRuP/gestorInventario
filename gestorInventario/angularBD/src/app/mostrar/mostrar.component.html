@@ -46,12 +46,56 @@
   <h2>Editar Producto</h2>
   <form (ngSubmit)="actualizar()">
     <div class="form-group">
+      <label for="id_producto">ID Producto</label>
+      <input id="id_producto" [(ngModel)]="productoSeleccionado.id_producto" name="id_producto" class="form-control" required readonly>
+    </div>
+    <div class="form-group">
       <label for="nombre">Nombre</label>
-      <input id="nombre" [(ngModel)]="productoSeleccionado.nombre" name="nombre" class="form-control">
+      <input id="nombre" [(ngModel)]="productoSeleccionado.nombre" name="nombre" class="form-control" required>
     </div>
     <div class="form-group">
       <label for="descripcion">Descripción</label>
-      <input id="descripcion" [(ngModel)]="productoSeleccionado.descripcion" name="descripcion" class="form-control">
+      <input id="descripcion" [(ngModel)]="productoSeleccionado.descripcion" name="descripcion" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="id_categoria">ID Categoría</label>
+      <input id="id_categoria" [(ngModel)]="productoSeleccionado.id_categoria" name="id_categoria" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="marca">Marca</label>
+      <input id="marca" [(ngModel)]="productoSeleccionado.marca" name="marca" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="precio_compra">Precio Compra</label>
+      <input id="precio_compra" [(ngModel)]="productoSeleccionado.precio_compra" name="precio_compra" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="precio_venta">Precio Venta</label>
+      <input id="precio_venta" [(ngModel)]="productoSeleccionado.precio_venta" name="precio_venta" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="cantidad_stock">Stocks</label>
+      <input id="cantidad_stock" [(ngModel)]="productoSeleccionado.cantidad_stock" name="cantidad_stock" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="unidad_medida">Unidad Medida</label>
+      <input id="unidad_medida" [(ngModel)]="productoSeleccionado.unidad_medida" name="unidad_medida" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="id_proveedor">ID Proveedor</label>
+      <input id="id_proveedor" [(ngModel)]="productoSeleccionado.id_proveedor" name="id_proveedor" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="fecha_ingreso">Fecha Ingreso</label>
+      <input id="fecha_ingreso" [(ngModel)]="productoSeleccionado.fecha_ingreso" name="fecha_ingreso" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="fecha_caducidad">Fecha Caducidad</label>
+      <input id="fecha_caducidad" [(ngModel)]="productoSeleccionado.fecha_caducidad" name="fecha_caducidad" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="codigo_barras">Código Barras</label>
+      <input id="codigo_barras" [(ngModel)]="productoSeleccionado.codigo_barras" name="codigo_barras" class="form-control" required>
     </div>
     <button type="submit" class="btn btn-success">Guardar Cambios</button>
   </form>
