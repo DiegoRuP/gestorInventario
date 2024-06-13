@@ -1,40 +1,42 @@
-<h1>
-    Mostrar registros
-</h1>
+<h1>Mostrar registros</h1>
 
 <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">ID Producto</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Descripcion</th>
-        <th scope="col">ID Categoria</th>
-        <th scope="col">Marca</th>
-        <th scope="col">Precio Compra</th>
-        <th scope="col">Precio Venta</th>
-        <th scope="col">Stocks</th>
-        <th scope="col">Unidad Medida</th>
-        <th scope="col">ID Proveedor</th>
-        <th scope="col">Fecha Ingreso</th>
-        <th scope="col">Fecha Caducidad</th>
-        <th scope="col">Codigo Barras</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let i of array">
-        <td>{{i.id}}</td>
-        <td>{{i.nombre}}</td>
-        <td>{{i.descripcion}}</td>
-        <td>{{i.id_categoria}}</td>
-        <td>{{i.precio_compra}}</td>
-        <td>{{i.precio_venta}}</td>
-        <td>{{i.cantidad_stocks}}</td>
-        <td>{{i.unidad_medida}}</td>
-        <td>{{i.id_proveedor}}</td>
-        <td>{{i.fecha_ingreso}}</td>
-        <td>{{i.fecha_caducidad}}</td>
-        <td>{{i.codigo_barras}}</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+  <thead>
+    <tr>
+      <th scope="col">ID Producto</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Descripción</th>
+      <th scope="col">ID Categoría</th>
+      <th scope="col">Marca</th>
+      <th scope="col">Precio Compra</th>
+      <th scope="col">Precio Venta</th>
+      <th scope="col">Stocks</th>
+      <th scope="col">Unidad Medida</th>
+      <th scope="col">ID Proveedor</th>
+      <th scope="col">Fecha Ingreso</th>
+      <th scope="col">Fecha Caducidad</th>
+      <th scope="col">Código Barras</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let producto of array">
+      <td>{{ producto.id_producto }}</td>
+      <td>{{ producto.nombre }}</td>
+      <td>{{ producto.descripcion }}</td>
+      <td>{{ producto.id_categoria }}</td>
+      <td>{{ producto.marca }}</td>
+      <td>{{ producto.precio_compra }}</td>
+      <td>{{ producto.precio_venta }}</td>
+      <td>{{ producto.cantidad_stock }}</td>
+      <td>{{ producto.unidad_medida }}</td>
+      <td>{{ producto.id_proveedor }}</td>
+      <td>{{ producto.fecha_ingreso }}</td>
+      <td>{{ producto.fecha_caducidad }}</td>
+      <td>{{ producto.codigo_barras }}</td>
+      <td>
+        <button class="btn btn-danger" (click)="baja(producto.id_producto)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

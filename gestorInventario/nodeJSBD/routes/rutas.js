@@ -44,6 +44,14 @@ router.post('/productos', [
     });
 });
 
+
+router.delete('/productos/:id', (req, res) => {
+    const id_producto = req.params.id;
+    user.delete(connection, id_producto, (data) => {
+        res.json(data);
+    });
+});
+
 // Nueva ruta para generar el reporte de productos agotados
 router.get('/generarReporte', (req, res) => {
     const query = 'SELECT * FROM productos WHERE cantidad_stock < 5';
@@ -69,6 +77,36 @@ router.get('/mostrar', (req, res) => {
         } else {
             res.json({ success: true, data: results });
         }
+    });
+});
+
+router.put('/productos/:id', [
+    body('nombre').not().isEmpty().isString(),
+    body('descripcion').not().isEmpty().isString(),
+    body('id_categoria').not().isEmpty().isString(),
+    body('marca').not().isEmpty().isString(),
+    body('precio_compra').not().isEmpty().isString(),
+    body('precio_venta').not().isEmpty().isString(),
+    body('cantidad_stock').not().isEmpty().isString(),
+    body('unidad_medida').not().isEmpty().isString(),
+    body('id_proveedor').not().isEmpty().isString(),
+    body('fecha_ingreso').not().isEmpty().isString(),
+    body('fecha_caducidad').not().isEmpty().isString(),
+    body('codigo_barras').not().isEmpty().isString(),
+], (req, res) => {
+    const id_producto = req.params.id;
+    const body = req.body;
+
+    console.log('Actualizando producto con ID:', id_producto);
+    console.log('Datos recibidos del formulario Angular:', req.body);
+
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ success: false, errors: errors.array() });
+    }
+
+    user.update(connection, id_producto, body, (data) => {
+        res.json(data);
     });
 });
 

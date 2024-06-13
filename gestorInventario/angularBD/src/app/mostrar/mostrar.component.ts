@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+    import { Component, OnInit } from '@angular/core';
 import { AbcService } from '../abc.service';
 import { CommonModule } from '@angular/common';
 
@@ -22,6 +22,26 @@ export class MostrarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  
+    this.abcService.consulta('http://localhost:3000/productos').subscribe(
+      (res: any) => {
+        console.log("Consulta general...");
+        console.log(res); 
+        this.array = res.products; 
+      },
+      (error) => {
+        console.error('Error al obtener los productos:', error);
+      }
+    );
+  }
+
+  baja(id_producto: string): void {
+    this.abcService.baja(id_producto)
+      .then((res) => {
+        console.log('Producto eliminado:', res);
+        this.array = this.array.filter(producto => producto.id_producto !== id_producto);
+      })
+      .catch((error) => {
+        console.error('Error al eliminar producto:', error);
+      });
   }
 }

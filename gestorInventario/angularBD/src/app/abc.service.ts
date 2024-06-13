@@ -14,13 +14,20 @@ export class AbcService {
     return this.httpClient.get(url);
   }
 
-  alta(url:string,body:any){
+  alta(url:string, body:any){
     return this.httpClient.post(url, body).toPromise();
+  }
+
+  baja(id: string){
+    return this.httpClient.delete(`${this.apiUrl}/productos/${id}`).toPromise();
   }
 
   generarReporte(url: string) {
     return this.httpClient.get(url);
   }
 
+  actualizar(id: string, body: any){
+    return this.httpClient.put(`${this.apiUrl}/productos/${id}`, body).toPromise();
+  }
 
 }
