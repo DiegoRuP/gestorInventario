@@ -44,11 +44,41 @@ router.post('/productos', [
     });
 });
 
+
 router.delete('/productos/:id', (req, res) => {
     const id_producto = req.params.id;
     user.delete(connection, id_producto, (data) => {
         res.json(data);
     });
 });
+
+// Nueva ruta para generar el reporte de productos agotados
+router.get('/generarReporte', (req, res) => {
+    const query = 'SELECT * FROM productos WHERE cantidad_stock < 5';
+
+    connection.query(query, (error, results) => {
+        if (error) {
+            console.error('Error al ejecutar la consulta: ', error);
+            res.status(500).json({ success: false, message: 'Error al obtener productos' });
+        } else {
+            res.json({ success: true, data: results });
+        }
+    });
+});
+
+// Nueva ruta para generar el reporte de productos agotados
+router.get('/mostrar', (req, res) => {
+    const query = 'SELECT * FROM productos';
+
+    connection.query(query, (error, results) => {
+        if (error) {
+            console.error('Error al ejecutar la consulta: ', error);
+            res.status(500).json({ success: false, message: 'Error al obtener productos' });
+        } else {
+            res.json({ success: true, data: results });
+        }
+    });
+});
+
 
 module.exports = router;

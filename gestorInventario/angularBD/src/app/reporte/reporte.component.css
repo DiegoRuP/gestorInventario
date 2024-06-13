@@ -1,0 +1,17 @@
+th{
+    border-radius: 20px;
+    padding: 10px;
+}
+td{
+    border-radius: 20px;
+    padding: 10px;
+}
+
+table{
+    border-radius: 20px;
+    padding: 10px;
+    margin: 20px;
+    width: 100%;
+    background-color: white;
+    opacity: .6;
+}

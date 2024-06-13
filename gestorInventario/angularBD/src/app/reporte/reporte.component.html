@@ -1,0 +1,79 @@
+<h1>Reporte Inventario Faltante</h1>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID Producto</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">ID Categoría</th>
+        <th scope="col">Marca</th>
+        <th scope="col">Precio Compra</th>
+        <th scope="col">Precio Venta</th>
+        <th scope="col">Cantidad en Stock</th>
+        <th scope="col">Unidad de Medida</th>
+        <th scope="col">ID Proveedor</th>
+        <th scope="col">Fecha de Ingreso</th>
+        <th scope="col">Fecha de Caducidad</th>
+        <th scope="col">Código de Barras</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let i of array">
+        <td>{{ i.id_producto }}</td>
+        <td>{{ i.nombre }}</td>
+        <td>{{ i.descripcion }}</td>
+        <td>{{ i.id_categoria }}</td>
+        <td>{{ i.marca }}</td>
+        <td>{{ i.precio_compra }}</td>
+        <td>{{ i.precio_venta }}</td>
+        <td>{{ i.cantidad_stock }}</td>
+        <td>{{ i.unidad_medida }}</td>
+        <td>{{ i.id_proveedor }}</td>
+        <td>{{ i.fecha_ingreso }}</td>
+        <td>{{ i.fecha_caducidad }}</td>
+        <td>{{ i.codigo_barras }}</td>
+      </tr>
+    </tbody>
+</table>
+
+<button class="button" (click)="generarPDF()">Descargar</button>
+
+<h1>Reporte Inventario Completo</h1>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID Producto</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">ID Categoría</th>
+        <th scope="col">Marca</th>
+        <th scope="col">Precio Compra</th>
+        <th scope="col">Precio Venta</th>
+        <th scope="col">Cantidad en Stock</th>
+        <th scope="col">Unidad de Medida</th>
+        <th scope="col">ID Proveedor</th>
+        <th scope="col">Fecha de Ingreso</th>
+        <th scope="col">Fecha de Caducidad</th>
+        <th scope="col">Código de Barras</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let i of array2">
+        <td>{{ i.id_producto }}</td>
+        <td>{{ i.nombre }}</td>
+        <td>{{ i.descripcion }}</td>
+        <td>{{ i.id_categoria }}</td>
+        <td>{{ i.marca }}</td>
+        <td>{{ i.precio_compra }}</td>
+        <td>{{ i.precio_venta }}</td>
+        <td>{{ i.cantidad_stock }}</td>
+        <td>{{ i.unidad_medida }}</td>
+        <td>{{ i.id_proveedor }}</td>
+        <td>{{ i.fecha_ingreso }}</td>
+        <td>{{ i.fecha_caducidad }}</td>
+        <td>{{ i.codigo_barras }}</td>
+      </tr>
+    </tbody>
+</table>

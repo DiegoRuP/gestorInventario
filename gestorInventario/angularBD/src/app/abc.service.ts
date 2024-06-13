@@ -21,4 +21,10 @@ export class AbcService {
   baja(id: string){
     return this.httpClient.delete(`${this.apiUrl}/productos/${id}`).toPromise();
   }
+
+  generarReporte(url: string) {
+    return this.httpClient.get(url);
+  }
+
+
 }
