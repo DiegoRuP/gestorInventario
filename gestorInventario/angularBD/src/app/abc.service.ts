@@ -15,4 +15,8 @@ export class AbcService {
   alta(url: string, body: any) {
     return this.httpClient.post(url, body).toPromise();
   }
+
+  buscarProductos(query: string) {
+    return this.httpClient.get(`http://localhost:3000/search?q=${query}`);
+  }
 }

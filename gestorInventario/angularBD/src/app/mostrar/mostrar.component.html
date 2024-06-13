@@ -2,21 +2,26 @@
     Mostrar registros
 </h1>
 
+<div>
+  <input [(ngModel)]="searchQuery" placeholder="Buscar productos" />
+  <button (click)="buscar()">Buscar</button>
+</div>
+
 <table class="table">
     <thead>
       <tr>
         <th scope="col">ID</th>
         <th scope="col">Nombre</th>
-        <th scope="col">Apellido</th>
-        <th scope="col">Email</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">ID Categoria</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let i of array">
-        <td>{{i.idUser}}</td>
-        <td>{{i.name}}</td>
-        <td>{{i.lastname}}</td>
-        <td>{{i.contact}}</td>
+        <td>{{i.id_producto}}</td>
+        <td>{{i.nombre}}</td>
+        <td>{{i.descripcion}}</td>
+        <td>{{i.id_categoria}}</td>
       </tr>
     </tbody>
   </table>
